@@ -50,13 +50,14 @@ sgMail
   .then((response) => {
     console.log(response[0].statusCode)
     console.log(response[0].headers)
+    return res.send(req.body);
   })
   .catch((error) => {
     console.error("Error: ",error)
     return res.status(error.code).send(error);
   })
 
-  return res.send(req.body);
+  
 });
 
 app.listen(port);
