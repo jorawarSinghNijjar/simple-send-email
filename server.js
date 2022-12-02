@@ -54,7 +54,7 @@ sgMail
   })
   .catch((error) => {
     console.error("Error: ",error)
-    res.send(error);
+    res.statu(400).send(error);
   })
 
   
