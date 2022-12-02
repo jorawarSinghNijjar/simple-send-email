@@ -43,18 +43,18 @@ const msg = {
   // html: template,
 }
 
-console.log("Recommended ------------------", data.recommendedSupplementsForEmail[0])
+// console.log("Recommended ------------------", data.recommendedSupplementsForEmail[0])
 
 sgMail
   .send(msg)
   .then((response) => {
     console.log(response[0].statusCode)
     console.log(response[0].headers)
-    return res.send(req.body);
+    res.send(req.body);
   })
   .catch((error) => {
     console.error("Error: ",error)
-    return res.status(error.code).send(error);
+    res.send(error);
   })
 
   
