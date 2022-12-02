@@ -53,6 +53,7 @@ sgMail
   })
   .catch((error) => {
     console.error("Error: ",error)
+    return res.status(error.code).send(error);
   })
 
   return res.send(req.body);
