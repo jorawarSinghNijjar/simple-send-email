@@ -17,7 +17,7 @@ var options = {
 
 
 var sgMail = require('@sendgrid/mail');
-var templateId = "d-f3878d0fcf4c46d9bc0c2f3c68e04553";
+var templateId = "d-37104ac913374aee92260eae82b89079";
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
