@@ -6,16 +6,6 @@ dotenv.config();
 var cors = require('cors');
 var bodyParser = require('body-parser');
 
-//SSL certificates
-var https = require('https');
-var fs = require('fs');
-
-var options = {
-    key: fs.readFileSync('./certs/server-key.pem'),
-    cert: fs.readFileSync('./certs/server-cert.pem'),
-};
-
-
 var sgMail = require('@sendgrid/mail');
 var templateId = "d-37104ac913374aee92260eae82b89079";
 
@@ -41,7 +31,7 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
 const msg = {
   to: data.email, // your recipient
-  from: 'dev.jorawar.singh@gmail.com', //  verified sender
+  from: 'media@zest.science', //  verified sender
   // subject: 'Zest - Recommendation for you',
   templateId: templateId,
   dynamic_template_data: {
@@ -69,9 +59,9 @@ sgMail
   
 });
 
-// app.listen(port);
+app.listen(port, () => {
+  console.log(`Server is listening on port ${port}`)
+})
 
-var server = https.createServer(options, app).listen(port, function(){
-  console.log("Express server listening on port " + port);
-});
+
 
