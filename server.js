@@ -6,6 +6,15 @@ dotenv.config();
 var cors = require('cors');
 var bodyParser = require('body-parser');
 
+//SSL certificates
+var https = require('https');
+var fs = require('fs');
+
+var options = {
+    key: fs.readFileSync('./certs/server-key.pem'),
+    cert: fs.readFileSync('./certs/server-cert.pem'),
+};
+
 
 var sgMail = require('@sendgrid/mail');
 var templateId = "d-f3878d0fcf4c46d9bc0c2f3c68e04553";
@@ -60,6 +69,9 @@ sgMail
   
 });
 
-app.listen(port);
+// app.listen(port);
 
-console.log("Server is running on " + port);
+var server = https.createServer(options, app).listen(port, function(){
+  console.log("Express server listening on port " + port);
+});
+
